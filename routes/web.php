@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClubController;
 use App\Http\Controllers\MainController;
 
+use App\Http\Controllers\CourseController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,3 +19,5 @@ use App\Http\Controllers\MainController;
 
 Route::get('/',[MainController::class, 'index'])->name('main');
 Route::get('club',[ClubController::class, 'index']);
+Route::get('course',[CourseController::class, 'index']);
+
