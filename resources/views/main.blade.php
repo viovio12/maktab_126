@@ -39,17 +39,32 @@
         <div class="col-lg-12">
           <div class="owl-service-item owl-carousel">
           <!-- adabiyot -->
+          @foreach($teachers as $tech)
             <div class="item">
               <div class="icon">
                 <img src="assets/images/adabustoz.jpg" alt="" style="border-radius: 60%;">
               </div>
               <div class="down-content">
-                <h4>Literature Teacher </h4>
-                <p>Umida Zakirova</p>
+                <h4>{{$tech->subject}} </h4>
+                <p>{{$tech->name}}</p>
               </div>
             </div>
-            <!-- diriktor -->
+            @endforeach
+            <!-- add/delete/edit -->
             <div class="item">
+              <div class="icon">
+                <!-- <img src="assets/images/adabustoz.jpg" alt="" style="border-radius: 60%;"> -->
+                <a href=""><button class="btn text-success mb-5"><i class="bi bi-plus-circle fa-2x"></i></button></a> 
+              </div>
+              <div class="down-content">
+                <h4><button type="button" class="btn btn-primary btn-lg">ADD</button>
+                </h4>
+          
+              </div>
+            </div>
+
+            <!-- diriktor -->
+            <!-- <div class="item">
               <div class="icon">
                 <img src="assets/images/headteacher.jpg" alt="" style="border-radius: 60%;">
               </div>
@@ -57,9 +72,9 @@
                 <h4>School Counselor</h4>
                 <p>Jamshidbek Abdullayev</p>
               </div>
-            </div>
+            </div> -->
             <!-- ingliz -->
-            <div class="item">
+            <!-- <div class="item">
               <div class="icon">
                 <img src="assets/images/englishustoz.jpg" alt="" style="border-radius: 60%;">
               </div>
@@ -67,9 +82,9 @@
                 <h4>English Teacher</h4>
                 <p>Mrs. Margomafrfrn</p>
               </div>
-            </div>
+            </div> -->
             <!-- math -->
-            <div class="item">
+            <!-- <div class="item">
               <div class="icon">
                 <img src="assets/images/math_ustoz.jpg" alt="" style="border-radius: 60%;">
               </div>
@@ -77,9 +92,9 @@
                 <h4>Math Teacher</h4>
                 <p>Toxir Akmalovich</p>
               </div>
-            </div>
+            </div> -->
             <!-- fizika -->
-            <div class="item">
+            <!-- <div class="item">
               <div class="icon">
                 <img src="assets/images/fizikaustoz.jpg" alt="" style="border-radius: 60%;">
               </div>
@@ -87,10 +102,10 @@
                 <h4>Physics Teacher</h4>
                 <p>Farangiz Anvarova</p>
               </div>
-            </div>
+            </div> -->
             
             <!-- tarix -->
-            <div class="item">
+            <!-- <div class="item">
               <div class="icon">
                 <img src="assets/images/tarixustoz.jpg" alt="" style="border-radius: 60%;">
               </div>
@@ -98,7 +113,7 @@
                 <h4>History Teacher</h4>
                 <p>Nilufar Jamalova</p>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
