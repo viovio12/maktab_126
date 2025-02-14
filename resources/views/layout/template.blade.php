@@ -41,15 +41,15 @@ https://templatemo.com/tm-569-edu-meeting
               <div class="col-12">
                   <nav class="main-nav">
                       <!-- ***** Logo Start ***** -->
-                      <a href="index.html" class="logo">
-                          SCHOOL-125
+                      <a href="/" class="logo">
+                          SCHOOL-126
                       </a>
                       <!-- ***** Logo End ***** -->
                       <!-- ***** Menu Start ***** -->
                       <ul class="nav">
-                          <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-                          <li><a href="meetings.html">Clubs</a></li>
-                          <li class="scroll-to-section"><a href="#courses">Courses</a></li> 
+                          <li class="/"><a href="#top" class="active">Home</a></li>
+                          <li><a href="/club">Clubs</a></li>
+                          <li class=""><a href="/course">Courses</a></li> 
                           <li class="scroll-to-section"><a href="#contact">Contact Us</a></li> 
                       </ul>        
                       <a class='menu-trigger'>

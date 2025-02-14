@@ -614,7 +614,7 @@
         </div> 
         <div class="col-lg-6 align-self-center">
           <div style="  color: white;">
-            <img src="assets/images/person.jpg" alt="" style="width: 62%; border-radius: 20%;margin-left: 18%;">
+            <img src="assets/images/person1.jpg" alt="" style="width: 62%; border-radius: 20%;margin-left: 18%;">
             
             <h5 style="text-align: center;margin-top: 1%;">School President</h5>
             
