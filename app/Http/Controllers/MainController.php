@@ -11,11 +11,11 @@ class MainController extends Controller
      */
     public function index()
     {
-        $teachers = DB::table('teachers')->get();
+       
 
 
 
-        return view('main', ['teachers' => $teachers]);
+        return view('main');
     }
 
     /**

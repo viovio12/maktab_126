@@ -1,23 +1,28 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ClubController;
-use App\Http\Controllers\MainController;
-
+use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\ClubController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\AdminDashboardController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+// Authentication routes
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/',[MainController::class, 'index'])->name('main');
-Route::get('club',[ClubController::class, 'index']);
-Route::get('course',[CourseController::class, 'index']);
+Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('register');
+Route::post('/register', [RegisterController::class, 'register'])->name('register.submit');
 
+// Main page (admin dashboard)
+Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.dashboard')->middleware('auth');
+
+// Grouped routes that require authentication
+Route::middleware(['auth'])->group(function () {
+    // Resource routes for managing teachers, courses, and clubs
+    Route::resource('/teachers', TeacherController::class);
+    Route::resource('/courses', CourseController::class);
+    Route::resource('/clubs', ClubController::class);
+});
