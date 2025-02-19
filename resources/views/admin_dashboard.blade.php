@@ -1,5 +1,3 @@
-<!-- resources/views/admin_dashboard.blade.php -->
-
 @extends('layout.template')
 
 @section('content')
@@ -47,20 +45,24 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($courses as $course)
-                    <tr>
-                        <td>{{ $course->name }}</td>
-                        <td>{{ $course->rating }}</td>
-                        <td>
-                            <a href="{{ route('courses.edit', $course->id) }}" class="btn btn-warning">Edit</a>
-                            <form action="{{ route('courses.destroy', $course->id) }}" method="POST" style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach
+                @if(isset($courses) && count($courses) > 0)
+                    @foreach($courses as $course)
+                        <tr>
+                            <td>{{ $course->name }}</td>
+                            <td>{{ $course->rating }}</td>
+                            <td>
+                                <a href="{{ route('courses.edit', $course->id) }}" class="btn btn-warning">Edit</a>
+                                <form action="{{ route('courses.destroy', $course->id) }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                @else
+                    <tr><td colspan="3">No courses found.</td></tr>
+                @endif
             </tbody>
         </table>
 
@@ -76,20 +78,24 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($clubs as $club)
-                    <tr>
-                        <td>{{ $club->name }}</td>
-                        <td>{{ $club->location }}</td>
-                        <td>
-                            <a href="{{ route('clubs.edit', $club->id) }}" class="btn btn-warning">Edit</a>
-                            <form action="{{ route('clubs.destroy', $club->id) }}" method="POST" style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach
+                @if(isset($clubs) && count($clubs) > 0)
+                    @foreach($clubs as $club)
+                        <tr>
+                            <td>{{ $club->name }}</td>
+                            <td>{{ $club->location }}</td>
+                            <td>
+                                <a href="{{ route('clubs.edit', $club->id) }}" class="btn btn-warning">Edit</a>
+                                <form action="{{ route('clubs.destroy', $club->id) }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                @else
+                    <tr><td colspan="3">No clubs found.</td></tr>
+                @endif
             </tbody>
         </table>
     </div>
