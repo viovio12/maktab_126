@@ -14,6 +14,11 @@ class AdminDashboardController extends Controller
         $courses = Course::all();
         $clubs = Club::all();
 
-        return view('admin_dashboard', compact('teachers', 'courses', 'clubs'));
+        return view('admin_dashboard')->with([
+            'teachers' => $teachers,
+            'courses' => $courses,
+            'clubs' => $clubs
+        ]);
+        
     }
 }

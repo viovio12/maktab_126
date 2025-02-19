@@ -74,4 +74,12 @@ class TeacherController extends Controller
     
         return redirect()->route('teachers.index')->with('success', 'Teacher updated successfully!');
     }
+    public function destroy($id)
+    {
+    $teacher = Teacher::findOrFail($id);
+    $teacher->delete();
+
+    return redirect()->route('teachers.index')->with('success', 'Teacher deleted successfully.');
+    }
+
 }

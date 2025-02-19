@@ -39,10 +39,10 @@
         <div class="col-lg-12">
           <div class="owl-service-item owl-carousel">
           <!-- adabiyot -->
-          @foreach($teachers as $tech)
+          @foreach($teach_names as $tech)
             <div class="item">
               <div class="icon">
-                <img src="assets/images/adabustoz.jpg" alt="" style="border-radius: 60%;">
+                <img src="{{ asset('storage/' . $tech->image) }}" alt="" style="border-radius: 60%;">
               </div>
               <div class="down-content">
                 <h4>{{$tech->subject}} </h4>
@@ -51,17 +51,7 @@
             </div>
             @endforeach
             <!-- add/delete/edit -->
-            <div class="item">
-              <div class="icon">
-                <!-- <img src="assets/images/adabustoz.jpg" alt="" style="border-radius: 60%;"> -->
-                <a href=""><button class="btn text-success mb-5"><i class="bi bi-plus-circle fa-2x"></i></button></a> 
-              </div>
-              <div class="down-content">
-                <h4><button type="button" class="btn btn-primary btn-lg">ADD</button>
-                </h4>
-          
-              </div>
-            </div>
+           
 
 
           </div>
@@ -72,144 +62,96 @@
 
   <section class="upcoming-meetings" id="meetings">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="section-heading">
-            <h2>Upcoming Clubs</h2>
-          </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-heading">
+                    <h2>Upcoming Clubs</h2>
+                </div>
+            </div>
+
+            <!-- Sidebar: Club List -->
+            <div class="col-lg-4">
+                <div class="categories">
+                    <h4>Clubs List</h4>
+                    <ul>
+                        @foreach($clubs as $club)
+                            <li><a href="#">{{ $club->name }}</a></li> <br>
+                        @endforeach
+                    </ul>
+                    <div class="main-button-red">
+                        <a href="meetings.html">All Upcoming Clubs</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Club Details -->
+            <div class="col-lg-8">
+                <div class="row">
+                    @foreach($clubs as $club)
+                        <div class="col-lg-6">
+                            <div class="meeting-item">
+                                <div class="thumb">
+                                    <div class="price">
+                                        <span>${{ $club->fee }}</span> <!-- Fee from DB -->
+                                    </div>
+                                    <a href="meeting-details.html">
+                                        <img src="{{ asset('storage/' . $club->image) }}" alt="{{ $club->name }}">
+                                    </a>
+                                </div>
+                                <div class="down-content">
+                                    <div class="date">
+                                        <h6>{{ date('M', strtotime($club->date)) }} <span>{{ date('d', strtotime($club->date)) }}</span></h6>
+                                    </div>
+                                    <a href="meeting-details.html"><h4>{{ $club->name }}</h4></a>
+                                    <p>{{ $club->description }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+
         </div>
-        <div class="col-lg-4">
-          <div class="categories">
-            <h4>Clubs List</h4>
-            <ul>
-              <li><a href="#">Debate club</a></li> <br>
-              <li><a href="#">Quiz club</a></li> <br>
-              <li><a href="#">IELTS club</a></li> <br>
-              <li><a href="#">SAT club</a></li><br>
-              <li><a href="#">and more</a></li>
-            </ul>
-            <div class="main-button-red">
-              <a href="meetings.html">All Upcoming Clubs</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-8">
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="meeting-item">
-                <div class="thumb">
-                  <div class="price">
-                    <span>Free</span>
-                  </div>
-                  <a href="meeting-details.html"><img src="assets/images/meeting-01.jpg" alt="New Lecturer Meeting"></a>
-                </div>
-                <div class="down-content">
-                  <div class="date">
-                    <h6>Nov <span>10</span></h6>
-                  </div>
-                  <a href="meeting-details.html"><h4>Debate club</h4></a>
-                  <p>Members engage in structured debates on a variety of topics, learning how to present persuasive arguments.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="meeting-item">
-                <div class="thumb">
-                  <div class="price">
-                    <span>Free</span>
-                  </div>
-                  <a href="meeting-details.html"><img src="assets/images/meeting-02.jpg" alt="Online Teaching"></a>
-                </div>
-                <div class="down-content">
-                  <div class="date">
-                    <h6>Nov <span>24</span></h6>
-                  </div>
-                  <a href="meeting-details.html"><h4>Quiz club</h4></a>
-                  <p>The Quiz Club encourages curiosity and general knowledge.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="meeting-item">
-                <div class="thumb">
-                  <div class="price">
-                    <span>Free</span>
-                  </div>
-                  <a href="meeting-details.html"><img src="assets/images/meeting-03.jpg" alt="Higher Education"></a>
-                </div>
-                <div class="down-content">
-                  <div class="date">
-                    <h6>Nov <span>26</span></h6>
-                  </div>
-                  <a href="meeting-details.html"><h4>IELTS club</h4></a>
-                  <p>The club provides resources and practice sessions to improve the key skills tested in the exam.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="meeting-item">
-                <div class="thumb">
-                  <div class="price">
-                    <span>Free</span>
-                  </div>
-                  <a href="meeting-details.html"><img src="assets/images/meeting-04.jpg" alt="Student Training"></a>
-                </div>
-                <div class="down-content">
-                  <div class="date">
-                    <h6>Nov <span>30</span></h6>
-                  </div>
-                  <a href="meeting-details.html"><h4>SAT club</h4></a>
-                  <p>Our goal is to boost students' confidence and scores in a supportive group environment.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
-  </section>
+</section>
 
  
 
-  <section class="our-courses" id="courses">
+<section class="our-courses" id="courses">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="section-heading">
-            <h2>Our Popular Courses</h2>
-          </div>
-        </div>
-        <div class="col-lg-12">
-          <div class="owl-courses-item owl-carousel">
-            <!-- algebra -->
-            <div class="item">
-              <img src="assets/images/algebra.jpg" alt="Course One" style="width: 301.5px; height: 200px; object-fit: fit;">
-              <div class="down-content">
-                <h4>Algebra</h4>
-                <div class="info">
-                  <div class="row">
-                    <div class="col-8">
-                      <ul>
-                       
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                        <li><i class="fa fa-star"></i></li>
-                      </ul>
-                    </div>
-                    <div class="col-4">
-                      
-                    </div>
-                  </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-heading">
+                    <h2>Our Popular Courses</h2>
                 </div>
-              </div>
             </div>
-
-          </div>
+            <div class="col-lg-12">
+                <div class="owl-courses-item owl-carousel">
+                @foreach ($courses as $course)
+<div class="item">
+    <img src="{{ asset('storage/' . $course->image) }}" alt="{{ $course->name }}" style="width: 301.5px; height: 200px; object-fit: cover;">
+    <div class="down-content">
+        <h4>{{ $course->name }}</h4>
+        <div class="info">
+            <div class="row">
+                <div class="col-8">
+                    <ul>
+                        @for ($i = 0; $i < $course->rating; $i++)
+                            <li><i class="fa fa-star"></i></li>
+                        @endfor
+                    </ul>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </section>
+</div>
+@endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 
   <section class="our-facts">
     <div class="container">

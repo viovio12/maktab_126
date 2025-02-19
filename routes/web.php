@@ -7,6 +7,7 @@ use App\Http\Controllers\ClubController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\MainController;
 
 // Authentication routes
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -17,7 +18,8 @@ Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('
 Route::post('/register', [RegisterController::class, 'register'])->name('register.submit');
 
 // Main page (admin dashboard)
-Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.dashboard')->middleware('auth');
+Route::get('/', [MainController::class, 'index'])->name('home'); // Put this FIRST!
+Route::get('/admin', [AdminDashboardController::class, 'index'])->name('admin.dashboard')->middleware('auth');
 
 // Grouped routes that require authentication
 Route::middleware(['auth'])->group(function () {

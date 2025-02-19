@@ -14,20 +14,17 @@ class MainController extends Controller
        
 
 
+        $teach_names = DB::table('teachers')->get();
+        $clubs = DB::table('clubs')->get();
+        $courses = DB::table('courses')->get(); // Fetch courses
 
-        return view('main');
+        return view('main', compact('teach_names', 'clubs', 'courses'));
     }
 
     /**
      * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        $tech_names = DB::table('teachers')->get();
-        return view('admin.createTeaher', ['tech_names' => $tech_names]);
-    }
+  
 
-    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
